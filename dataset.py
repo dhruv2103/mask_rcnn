@@ -25,10 +25,10 @@ class ImageDataset(Dataset):
             # extract image id
             image_id = filename[:-4]
             # skip all images after 150 if we are building the train set
-            if is_train and int(image_id) >= int(len(listdir(images_dir)) * 0.8):
+            if is_train and (filename in listdir(images_dir)[:75]):
                 continue
             # skip all images before 150 if we are building the test/val set
-            if not is_train and int(image_id) < int(len(listdir(images_dir)) * 0.8):
+            if not is_train and (filename in listdir(images_dir)[75:]):
                 continue
             img_path = images_dir + filename
             ann_path = annotations_dir + image_id + '.xml'
