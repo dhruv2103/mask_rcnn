@@ -5,7 +5,7 @@ STEPS_PER_EPOCH = 200
 
 PRETRAINED_MODEL = 'pretrained_model/mask_rcnn_coco.h5'
 SAVED_MODEL = 'saved_models'
-TRAINED_MODEL = 'saved_models/kangaroo_cfg20200920T1445/mask_rcnn_kangaroo_cfg_0005.h5'
+TRAINED_MODEL = 'saved_models/retailobjdetection_cfg20210621T1745/mask_rcnn_retailobjdetection_cfg_0025.h5'
 
 dataset_path = 'dataset'
 classes_path = 'dataset/classes.txt'
