@@ -59,7 +59,7 @@ class ImageDataset(Dataset):
         info = self.image_info[image_id]
         return info['path']
 
-
+    
 # if __name__ == '__main__':
 #     # train set
 #     train_set = KangarooDataset()
