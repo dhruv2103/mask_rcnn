@@ -25,8 +25,8 @@ import global_variable as gv
 warnings.filterwarnings("ignore")
 
 ALLOWED_EXTENSIONS = {'jpeg', 'jpg', 'png'}
-tmp_upload_path = './tmp/uploads/'
-tmp_output_path = './tmp/output/'
+tmp_upload_path = 'tmp/uploads/'
+tmp_output_path = 'tmp/output/'
 
 app = Flask(__name__)
 cors=CORS(app)
@@ -81,6 +81,7 @@ def detectEntity():
                     yhat = gv.model.detect(sample, verbose=0)[0]
 
                 print('# ' + '-' * 40 + '  Result  ' + '-' * 40 + ' #')
+                print("yhat: ", yhat)
                 print("Positions: ", yhat['rois'])
                 print("Classes: ", yhat['class_ids'])
                 print("Scores: ", yhat['scores'])
@@ -128,14 +129,16 @@ if __name__ == '__main__':
     graph = tf.get_default_graph()
 
     os.mkdir('logs/') if not os.path.isdir('logs/') else None
-    os.mkdir(tmp_upload_path) if not os.path.isdir(tmp_upload_path) else None
-    os.mkdir(tmp_output_path) if not os.path.isdir(tmp_output_path) else None
+    os.makedirs(tmp_upload_path) if not os.path.isdir(tmp_upload_path) else None
+    os.makedirs(tmp_output_path) if not os.path.isdir(tmp_output_path) else None
 
     # create config
     gv.cfg = PredictionConfig()
     # define the model
     gv.model = MaskRCNN(mode='inference', model_dir=SAVED_MODEL, config=gv.cfg)
     # load model weights
+    print('# ' + '-' * 40 + '  Loading Model..!  ' + '-' * 40 + ' #')
     gv.model.load_weights(TRAINED_MODEL, by_name=True)
+    print('# ' + '-' * 40 + '  Model Loaded Successfully..!  ' + '-' * 40 + ' #')
 
     app.run(debug=False, host='0.0.0.0', port=5000)
