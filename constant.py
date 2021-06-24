@@ -1,7 +1,7 @@
 EPOCHS = 25
 
 CONFIG_NAME = "retailObjDetection_cfg"
-STEPS_PER_EPOCH = 200
+STEPS_PER_EPOCH = 15
 
 PRETRAINED_MODEL = 'pretrained_model/mask_rcnn_coco.h5'
 SAVED_MODEL = 'saved_models'
