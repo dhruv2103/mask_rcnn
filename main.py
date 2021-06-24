@@ -111,7 +111,7 @@ def detectEntity():
                     draw.text(text_origin, label, fill=(255, 255, 255), font=font)
                     del draw
 
-                out_file = os.path.join(tmp_output_path, "file_name")
+                out_file = os.path.join(tmp_output_path, file_name)
                 img.save(out_file)
 
                 return send_file(out_file, mimetype='image/jpg'), 200
